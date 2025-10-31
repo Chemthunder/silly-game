@@ -4,6 +4,10 @@ namespace SpriteKind {
 scene.onHitWall(SpriteKind.Player, function (sprite, location) {
     canDash = true
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile6`, function (sprite, location) {
+    pause(500)
+    sprites.destroy(playerSprite, effects.disintegrate, 100)
+})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (playerSprite.isHittingTile(CollisionDirection.Bottom)) {
         playerSprite.vy = -140
@@ -29,7 +33,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             )
             playerSprite.setVelocity(0, -330)
             scene.cameraShake(2, 100)
-            for (let index = 0; index < 10; index++) {
+            for (let index = 0; index < 15; index++) {
                 dashParticle1 = sprites.create(img`
                     . 9 . 
                     9 9 9 
@@ -64,6 +68,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 let dashParticle1: Sprite = null
 let playerSprite: Sprite = null
 let canDash = false
+effects.blizzard.startScreenEffect()
 controller.configureRepeatEventDefaults(0, 0)
 canDash = true
 playerSprite = sprites.create(img`
