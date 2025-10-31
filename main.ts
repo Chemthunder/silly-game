@@ -20,7 +20,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             1 1 1 1 1 
             1 1 1 1 1 
             `],
-        500,
+        200,
         false
         )
         playerSprite.setVelocity(0, -330)
@@ -47,6 +47,9 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             true
             )
             dashParticle1.setFlag(SpriteFlag.AutoDestroy, true)
+            dashParticle1.setFlag(SpriteFlag.GhostThroughWalls, true)
+            dashParticle1.setFlag(SpriteFlag.GhostThroughTiles, true)
+            dashParticle1.setFlag(SpriteFlag.GhostThroughSprites, true)
             dashParticle1.setVelocity(0, 20)
             pause(10)
         }
